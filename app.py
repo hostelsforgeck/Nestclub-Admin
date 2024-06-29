@@ -18,7 +18,7 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        if username == app.config['UNAME'] and password == app.config['PWORD']:
+        if username == os.environ.get('UNAME') and password == os.environ.get('PWORD'):
             session['username'] = username
             return redirect(url_for('dashboard'))
         else:
