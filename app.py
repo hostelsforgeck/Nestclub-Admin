@@ -9,7 +9,7 @@ app.config.from_object(config)
 app.secret_key = app.config['SECRET_KEY']
 
 # Initialize MongoDB client
-client = MongoClient(app.config['MONGO_URI'])
+client = MongoClient(os.environ.get('MONGODB_URI'))
 db = client['db1']
 collection = db['user_db']
 
