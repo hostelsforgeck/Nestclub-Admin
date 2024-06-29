@@ -5,7 +5,6 @@ from flask_paginate import Pagination, get_page_parameter
 
 
 app = Flask(__name__)
-app.config.from_object(config)
 app.secret_key = "BIG_BADASS_SECRET_KEY"
 
 # Initialize MongoDB client
