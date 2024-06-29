@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NestClub-Date-Details</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='date_details.css') }}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">NestClub-Dashboard</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="content-container">
+            <h3>Details for {{ requested_date }}</h3>
+
+            <div class="card-group row justify-content-center">
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Requests</h5>
+                            <p class="card-text">{{ total_requests }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Informed Clients</h5>
+                            <p class="card-text">{{ informed_client_count }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Informed Owners</h5>
+                            <p class="card-text">{{ informed_owner_count }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="mt-4">Requests on {{ requested_date }}</h3>
+            <div class="table-responsive"> <!-- Added a wrapper for responsive scrolling -->
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                        <th>Name</th>
+                        <th>Sem</th>
+                        <th>Dept</th>
+                        <th>College</th>
+                        <th>User Ph</th>
+                        <th>Email</th>
+                        <th>H_ID</th>
+                        <th>Hostel Name</th>
+                        <th>Owner Ph</th>
+                        <th>Requested Time</th>
+                        <th>Informed Owner</th>
+                        <th>Informed Client</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.semester }}</td>
+                        <td>{{ user.department }}</td>
+                        <td>{{ user.college }}</td>
+                        <td>{{ user.user_ph }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.hostel_id }}</td>
+                        <td>{{ user.hostel_name }}</td>
+                        <td>{{ user.owner_ph }}</td>
+                        <td>{{ user.requested_time }}</td>
+                        <td>
+                            {% if user.informed_owner %}
+                            <form action="{{ url_for('update_status', user_id=user._id, status_type='owner') }}" method="POST" data-user-id="{{ user._id }}" data-status-type="owner">
+                                <button type="submit" class="btn btn-danger" onclick="redirectTo('owner', '{{ user.user_ph }}','{{ user.owner_ph }}', '{{ user.college }}', '{{ user.name }}', '{{ user.semester }}', '{{ user.department }}',  '{{ user.requested_date }}', '{{ user.requested_time }}', '{{ user.hostel_name}}' )">Informed Owner</button>
+                            </form>
+                            {% else %}
+                                <form action="{{ url_for('update_status', user_id=user._id, status_type='owner') }}" method="POST" data-user-id="{{ user._id }}" data-status-type="owner">
+                                    <button type="submit" class="btn btn-success" onclick="redirectTo('owner', '{{ user.user_ph }}','{{ user.owner_ph }}', '{{ user.college }}', '{{ user.name }}', '{{ user.semester }}', '{{ user.department }}',  '{{ user.requested_date }}', '{{ user.requested_time }}', '{{ user.hostel_name}}' )">Inform Owner</button>
+                                </form>                                                                                     
+                            {% endif %} 
+                        </td>
+                        <td>
+                            {% if user.informed_client %}
+                            <form action="{{ url_for('update_status', user_id=user._id, status_type='client') }}" method="POST" data-user-id="{{ user._id }}" data-status-type="client">
+                                <button type="submit" class="btn btn-danger" onclick="redirectTo('client',  '{{ user.user_ph }}','{{ user.owner_ph }}', '{{ user.college }}', '{{ user.name }}', '{{ user.semester }}', '{{ user.department }}',  '{{ user.requested_date }}', '{{ user.requested_time }}', '{{ user.hostel_name}}' )">Informed Client</button>
+                            </form>
+                            {% else %}
+                                <form action="{{ url_for('update_status', user_id=user._id, status_type='client') }}" method="POST" data-user-id="{{ user._id }}" data-status-type="client">
+                                    <button type="submit" class="btn btn-success" onclick="redirectTo('client', '{{ user.user_ph }}','{{ user.owner_ph }}', '{{ user.college }}', '{{ user.name }}', '{{ user.semester }}', '{{ user.department }}',  '{{ user.requested_date }}', '{{ user.requested_time }}', '{{ user.hostel_name}}' )">Inform Client</button>
+                                </form>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <!-- Pagination controls -->
+            <div class="d-flex justify-content-center mt-4">
+                {{ pagination.links }}
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2024 Nestclub. All Rights Reserved.
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>  
+    <script>
+        function redirectTo(type, user_ph, owner_ph, college, name, semester, department, requested_date, requested_time, hostel_name) {
+            if (type === 'owner') {
+                let whatsappLink = `https://api.whatsapp.com/send/?phone=${owner_ph}&text=A%20student%20requested%20your%20hostel%20%0A%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%0AName%20%20%20%20%3A%20${name}%0AClass%20%20%20%20%20%3A%20${semester + " " + department}%0ACollege%20%3A%20${college}%0APhone%20%20%20%3A%20${user_ph}%20%0ARequested%20at%20%3A%20${requested_date + " " + requested_time}%0APlease%20contact%20soon%21`;
+                window.open(whatsappLink, '_blank');
+            } else if (type === 'client') {
+                let whatsappLink = `https://api.whatsapp.com/send/?phone=${user_ph}&text=Thank%20you%20${name}%2C%20for%20using%20%2ANestclub%2A%2C%0AThe%20owner%20of%20%27${hostel_name}%27%20will%20contact%20you%20soon%21%2E%0A%0APlease%20reply%20%601%60%20if%20you%20have%20moved%20into%20this%20hostel%2C%20or%20%600%60%20if%20the%20owner%20has%20not%20contacted%20you%20within%202%20days%2E`;
+                window.open(whatsappLink, '_blank');
+            }
+        }
+    </script>
+</body>
+</html>

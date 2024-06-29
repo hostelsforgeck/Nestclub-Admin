@@ -1,0 +1,96 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+body {
+    background-color: #f8f9fa; /* Light gray background */
+    color: #343a40; /* Dark gray text */
+    font-family: Arial, sans-serif; /* Default font family */
+}
+.content-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.card {
+    border: none; /* No border for cards */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Soft shadow */
+    transition: transform 0.3s ease-in-out;
+
+}
+.card-title {
+    color: #343a40;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: center;
+}
+.card-text {
+    color: #f25f5f;
+    font-size: 1.1rem;
+    font-weight: bolder;
+    text-align: center;
+}
+.card-body {
+    padding: 1.25rem; /* Padding inside cards */
+}
+.table {
+    margin-top: 2rem; /* Margin above the table */
+    background-color: #ffffff; /* White background for table */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Soft shadow */
+}
+.table th, .table td {
+    vertical-align: middle; /* Center text vertically in table cells */
+}
+.btn-primary {
+    background-color: #007bff; /* Blue primary button */
+    border-color: #007bff; /* Blue border for button */
+}
+.btn-primary:hover {
+    background-color: #0069d9; /* Darker blue on hover */
+    border-color: #0062cc; /* Darker border on hover */
+}
+.navbar {
+    background-color: #343a40; /* Dark background for navbar */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #dee2e6; /* Lighter border bottom */
+}
+.navbar-brand {
+    font-size: 1.5rem; /* Larger font size for brand */
+    color: #ffffff; /* White text color */
+    font-weight: bold; /* Bold font weight */
+}
+.navbar-toggler {
+    border-color: #ffffff; /* White border for toggler */
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: #ffffff; /* White text color for links */
+}
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #f8f9fa; /* Lighter text color on hover */
+}
+h2, h3 {
+    color: #343a40; /* Dark gray for heading text */
+    font-weight: bold; /* Bold font weight */
+    margin-bottom: 20px; /* Bottom margin for headings */
+}
+.container {
+    margin-top: 20px; /* Top margin for content */
+}
+.table-responsive {
+    overflow-x: auto; /* Allow horizontal scrolling on small screens */
+}
+.btn-sm {
+    font-size: 0.875rem; /* Smaller font size for small buttons */
+}
+footer {
+    background-color: #343a40; /* Dark background for footer */
+    color: #ffffff; /* White text color */
+    text-align: center; /* Center align text */
+    padding: 10px 0; /* Padding top and bottom */
+    width: 100%; /* Full width */
+}

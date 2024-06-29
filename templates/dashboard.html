@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NestClub-Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Custom CSS for styling -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">NestClub-Dashboard</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content-wrapper">
+        <div class="container mt-4">
+            <!-- Welcome message -->
+            <h2 class="text-center mb-4">Welcome back, Saleem!</h2>
+
+            <!-- Top row with centered cards -->
+            <div class="row justify-content-center">
+                <div class="col-md-3 mb-3">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Total Users Requested</h5>
+                            <p class="card-text">{{ total_requests }}</p> <!-- Display total request entries here -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Informed Clients</h5>
+                            <p class="card-text">{{ informed_client_count }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Informed Owners</h5>
+                            <p class="card-text">{{ informed_owner_count }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Date Details section -->
+            <h3 class="mt-5 mb-4 text-center">Date Details</h3>
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Date</th>
+                            <th>Total Requests</th>
+                            <th>Total Informed Clients</th>
+                            <th>Total Informed Owners</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for date in requested_date_count %}
+                        <tr>
+                            <td>{{ date._id }}</td>
+                            <td>{{ date.total_requests }}</td>
+                            <td>{{ date.informed_client_count }}</td>
+                            <td>{{ date.informed_owner_count }}</td>
+                            <td>
+                                <a href="{{ url_for('date_details', requested_date=date._id) }}" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-info-circle"></i> Details
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination controls -->
+            <div class="d-flex justify-content-center mt-4">
+                {{ pagination.links }}
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2024 Nestclub. All Rights Reserved.
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+body {
+    background-color: #f8f9fa;
+    color: #343a40;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.navbar {
+    background-color: #343a40;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: #ffffff;
+}
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #f8f9fa;
+}
+.container {
+    margin-top: 20px;
+    flex: 1;
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+}
+.content-container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+h3 {
+    color: #343a40;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease-in-out;
+}
+.card:hover {
+    transform: scale(1.02); /* Scale up the card on hover for a subtle effect */
+}
+.card-body {
+    padding: 1.25rem;
+}
+.card-title {
+    color: #343a40;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: center;
+}
+.card-text {
+    color: #f25f5f;
+    font-size: 1.1rem;
+    font-weight: bolder;
+    text-align: center;
+}
+.card-group {
+    display: flex;
+    justify-content: center;
+}
+.table {
+    margin-top: 20px;
+    margin-left: 0;
+    table-layout: fixed;
+    width: 100%;
+    overflow-x: auto; /* Enable horizontal scroll on small screens */
+    display: block; /* Ensure the table is block-level for scroll to work */
+}
+.table th, .table td {
+    vertical-align: middle;
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal !important;
+    text-align: center; /* Adjust text alignment if needed */
+}
+.table th:nth-child(1),
+.table td:nth-child(1) {
+    width: 10%; /* Adjust width for Name column */
+}
+.table th:nth-child(2),
+.table td:nth-child(2) {
+    width: 5%; /* Adjust width for Sem column */
+}
+.table th:nth-child(3),
+.table td:nth-child(3) {
+    width: 5%; /* Adjust width for Dept column */
+}
+.table th:nth-child(4),
+.table td:nth-child(4) {
+    width: 10%; /* Adjust width for College column */
+}
+.table th:nth-child(5),
+.table td:nth-child(5) {
+    width: 10%; /* Adjust width for User Ph column */
+}
+.table th:nth-child(6),
+.table td:nth-child(6) {
+    width: 15%; /* Adjust width for Email column */
+}
+.table th:nth-child(7),
+.table td:nth-child(7) {
+    width: 5%; /* Adjust width for Hostel ID column */
+}
+.table th:nth-child(8),
+.table td:nth-child(8) {
+    width: 10%; /* Adjust width for Hostel Name column */
+}
+.table th:nth-child(9),
+.table td:nth-child(9) {
+    width: 9%; /* Adjust width for Owner Ph column */
+}
+.table th:nth-child(10),
+.table td:nth-child(10) {
+    width: 7%; /* Adjust width for Requested Time column */
+}
+.table th:nth-child(11),
+.table td:nth-child(11),
+.table th:nth-child(12),
+.table td:nth-child(12) {
+    width: 8%; /* Adjust width for Informed Owner and Informed Client columns */
+}
+.btn {
+    font-size: 0.875rem;
+    border-radius: 20px;
+    padding: 8px 16px;
+    margin-right: 8px;
+}
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+.btn:hover {
+    opacity: 0.85;
+}
+.d-flex {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.justify-content-center {
+    justify-content: center !important;
+}
+.card-group {
+    display: flex;
+    justify-content: center;
+}
+footer {
+    background-color: #343a40;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 0;
+    position: static;
+    width: 100%;
+    bottom: 0;
+}
+@media (max-width: 768px) {
+
+
+.table th, .table td {
+    font-size: 0.9rem; /* Adjust font size for smaller screens */
+}
+.table th:nth-child(1),
+.table td:nth-child(1),
+.table th:nth-child(2),
+.table td:nth-child(2),
+.table th:nth-child(3),
+.table td:nth-child(3),
+.table th:nth-child(4),
+.table td:nth-child(4),
+.table th:nth-child(5),
+.table td:nth-child(5),
+.table th:nth-child(6),
+.table td:nth-child(6),
+.table th:nth-child(7),
+.table td:nth-child(7),
+.table th:nth-child(8),
+.table td:nth-child(8),
+.table th:nth-child(9),
+.table td:nth-child(9),
+.table th:nth-child(10),
+.table td:nth-child(10),
+.table th:nth-child(11),
+.table td:nth-child(11),
+.table th:nth-child(12),
+.table td:nth-child(12) {
+    min-width: 120px; /* Allow columns to resize dynamically */
+}
+}
