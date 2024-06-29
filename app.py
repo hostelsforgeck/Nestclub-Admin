@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from flask_paginate import Pagination, get_page_parameter
-
+import os
 
 app = Flask(__name__)
 app.secret_key = "BIG_BADASS_SECRET_KEY"
