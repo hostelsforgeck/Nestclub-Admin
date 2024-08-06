@@ -139,7 +139,7 @@
                 let whatsappLink = `https://api.whatsapp.com/send/?phone=${owner_ph}&text=A%20student%20requested%20${hostel_name}%20%0A%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%2D%0AName%20%20%20%20%3A%20${name}%0AClass%20%20%20%20%20%3A%20${semester + " " + department}%0ACollege%20%3A%20${college}%0APhone%20%20%20%3A%20${user_ph}%20%0ARequested%20at%20%3A%20${requested_date + " " + requested_time}%0APlease%20contact%20soon%21`;
                 window.open(whatsappLink, '_blank');
             } else if (type === 'client') {
-                let whatsappLink = `https://api.whatsapp.com/send/?phone=${user_ph}&text=Thank%20you%20${name}%2C%20for%20using%20%2ANestclub%2A%2C%20The%20owner%20of%20%27${hostel_name}%27%20will%20contact%20you%20soon%21%2E%0A%0APlease%20reply%20%601%60%20if%20you%20have%20moved%20into%20this%20hostel%2C%20or%20%600%60%20if%20the%20owner%20has%20not%20contacted%20you%20within%202%20days%2E`;
+                let whatsappLink = `https://api.whatsapp.com/send/?phone=91${user_ph}&text=Thank%20you%20${name}%2C%20for%20using%20%2ANestclub%2A%2C%20The%20owner%20of%20%27${hostel_name}%27%20will%20contact%20you%20soon%21%2E%0A%0APlease%20reply%20%601%60%20if%20you%20have%20moved%20into%20this%20hostel%2C%20or%20%600%60%20if%20the%20owner%20has%20not%20contacted%20you%20within%202%20days%2E`;
                 window.open(whatsappLink, '_blank');
             }
         }
